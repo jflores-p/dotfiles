@@ -1,0 +1,26 @@
+[alias]
+
+    # Commit all changes.
+    ca = !git add -A && git commit -av
+
+    # Add untracked, remove deleted and show status
+    adda = !git add -A && git status
+
+    # Switch to a branch, creating it if necessary.
+    goto = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+    # Delete a branch
+    lop = "!d() { git branch -d \"$1\" 2> /dev/null ; }; d"
+
+[user]
+
+	email = joaquin_fp2000@hotmail.com
+	name = Joaquin Flores
+
+[credential]
+
+	helper = store
+
+[init]
+
+    templateDir = ~/.config/git/template/
