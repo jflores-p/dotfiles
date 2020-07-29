@@ -15,7 +15,9 @@ alias week='date +%V'
 alias update='sudo pacman -Syu'
 
 # Bare git repo alias para dotfiles
-alias dot="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias dot="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"	# para usar 'dot' enves de 'git' para el bare repository
+alias dota="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME add"	# comando rapido de add
+alias dotc="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME commit -m"	# comando rapido de commit
 
 # Cambio de 'ls' a 'exa'
 alias ls="exa -al@ --color=always --group-directories-first"	# long-view -- allfiles
