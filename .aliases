@@ -14,8 +14,10 @@ alias week='date +%V'
 # Get general update
 alias update='sudo pacman -Syu'
 
-###### Git ######
+# Bare git repo alias para dotfiles
+alias dot="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 
-# Add untracked, remove deleted and show status
-# alias adda="git add -A && git status
-alias gcfg="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+# Cambio de 'ls' a 'exa'
+alias ls="exa -al@ --color=always --group-directories-first"	# long-view -- allfiles
+alias la="exa -a --color=always --group-directories-first"	# allfiles
+alias ll="exa -l --color=always --group-directories-first"	# long-view
