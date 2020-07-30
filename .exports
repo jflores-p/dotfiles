@@ -7,6 +7,7 @@ export EDITOR='nvim';
 #export EXA_COLORS=''
 
 # GO
+GOBBIN='/usr/local/go/bin'
 export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 
@@ -17,4 +18,4 @@ NODEJS="/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin/"
 
 # PATH -- configuracion base y despues añade extras
 PATH="/home/joako/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-export PATH=$PATH:$NODEJS:$GOBIN
+export PATH=$PATH:$NODEJS:$GOBBIN:$GOBIN
