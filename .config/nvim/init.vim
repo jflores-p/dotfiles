@@ -47,7 +47,7 @@ set scrolloff=5
 " ----------------------------------------------------------------------------------------
 
 let g:lightline = {
-	\'colorscheme':'material',
+	\'colorscheme':'Tomorrow_Night_Bright',
 	\'active':{
 	\   'left':[[ 'mode','paste'],
 	\	    [ 'gitbranch','cocstatus'],['filename','modifed']]
