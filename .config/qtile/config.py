@@ -77,16 +77,16 @@ keys = [
 
 ### BAR COLORS ###
 
-colors = [["#282a36","#282a36"],    # 'gris'            # panel background
+colors = [["#282a36","#282a36"],    # 'gris' # panel background
           ["#434758","#434758"],    # 'gris' mas claro(arriba) # background for current screen tab
-          ["#ffffff","#ffffff"],    # blanco            # font color for group names
-          ["#ff5555","#ff5555"],    # salmon            # border line color for current tab
-          ["#8d62a9","#8d62a9"],    # moradito          # border line color for other tab and odd widgets
-          ["#668bd7","#668bd7"],    # celestico opaco   # color dor the even widgets
-          ["#e1acff","#e1acff"],    # rosadito          # window name
-          ["#000000","#000000"],    # negro             # background for other screen tabs
-          ["#A77AC4","#A77AC4"],    # morado/rosado     # dark green gradiant for other screen tabs
-          ["#50fa7b","#50fa7b"],    # verde chillon     # bakground color for network widget
+          ["#ffffff","#ffffff"],    # blanco # font color for group names
+          ["#ff5555","#ff5555"],    # salmon # border line color for current tab
+          ["#8d62a9","#8d62a9"],    # moradito # border line color for other tab and odd widgets
+          ["#668bd7","#668bd7"],    # celestico opaco # color dor the even widgets
+          ["#e1acff","#e1acff"],    # rosadito # window name
+          ["#000000","#000000"],    # negro # background for other screen tabs
+          ["#A77AC4","#A77AC4"],    # morado/rosado # dark green gradiant for other screen tabs
+          ["#50fa7b","#50fa7b"],    # verde chillon # bakground color for network widget
           ["#7197E7","#7197E7"]]    # celestico calmado # bakground color for pacman widget
 
 ### GROUPS ###
