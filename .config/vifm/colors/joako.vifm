@@ -52,7 +52,7 @@ highlight clear
 highlight Border    cterm=none  ctermfg=035 ctermbg=default
 
 highlight TopLine   cterm=none  ctermfg=002 ctermbg=default
-highlight TopLineSel    cterm=bold  ctermfg=002 ctermbg=015
+highlight TopLineSel    cterm=bold  ctermfg=234 ctermbg=104 	" Modificado
 
 highlight Win       cterm=none  ctermfg=250 ctermbg=default
 highlight Directory cterm=bold  ctermfg=004 ctermbg=default
@@ -61,7 +61,7 @@ highlight OtherLine cterm=bold  ctermfg=default ctermbg=default
 highlight Selected  cterm=none  ctermfg=003 ctermbg=008
 
 highlight JobLine   cterm=bold  ctermfg=250 ctermbg=008
-highlight StatusLine    cterm=none  ctermfg=250 ctermbg=015
+highlight StatusLine    cterm=none  ctermfg=234 ctermbg=104 	" Modificado
 highlight ErrorMsg  cterm=bold  ctermfg=001 ctermbg=default
 highlight WildMenu  cterm=bold  ctermfg=015 ctermbg=250
 highlight CmdLine   cterm=none  ctermfg=007 ctermbg=default
