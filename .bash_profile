@@ -5,6 +5,8 @@ for file in ~/.bash_{aliases,prompt,exports}; do
 done;
 unset file;
 
+colorscript -r
+
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 

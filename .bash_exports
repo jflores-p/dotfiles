@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-# Make vim the default editor.
+# Some minor fixes
 export EDITOR=nvim
 export HISTCONTROL=ignoreboth
-
-# Modifica colores de 'EXA'
-#export EXA_COLORS=''
+export ZDOTDIR='$HOME/.config/zsh/'
 
 # GO
 export GOBBIN=/usr/local/go/bin
