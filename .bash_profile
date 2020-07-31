@@ -1,9 +1,6 @@
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
-
 # Load the shell dotfiles, and then some:
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{aliases,prompt,exports}; do
+for file in ~/.bash_{aliases,prompt,exports}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -13,3 +10,6 @@ shopt -s histappend;
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+
+# *cd sin necesidad de escribir 'cd'
+shopt -s autocd

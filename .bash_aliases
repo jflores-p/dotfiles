@@ -30,3 +30,5 @@ alias ll='exa -l --color=always --group-directories-first'	# long-view
 
 # 'htop' enves de 'top'
 alias top='htop'
+
+alias nv='nvim'
