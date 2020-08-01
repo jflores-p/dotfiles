@@ -11,12 +11,14 @@ setopt HIST_REDUCE_BLANKS HIST_IGNORE_SPACE
 
 
 ###### EXPORTS ######
-source $ZDOTDIR/.exports
+source $ZDOTDIR/exports.zsh
 
 ###### ALIASES ######
-source $ZDOTDIR/.aliases
+source $ZDOTDIR/aliases.zsh
+
 
 ###### PROMPT ######
-source $ZDOTDIR/.oxide_prompt
+source $ZDOTDIR/oxide_prompt.zsh
+
 
 colorscript -r

@@ -16,7 +16,7 @@ alias update='sudo pacman -Syu'
 alias refresh='source $HOME/.bashrc'
 
 # Bare git repo alias para dotfiles
-alias do='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'	# para usar 'dot' enves de 'git' para el bare repository
+alias ds='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'	# para usar 'dot' enves de 'git' para el bare repository
 alias doa='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME add'	# comando rapido de add
 alias dos='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME status'	# comando rapido de status 
 alias doc='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME commit -m'	# comando rapido de commit
