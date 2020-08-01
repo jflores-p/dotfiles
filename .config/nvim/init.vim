@@ -35,6 +35,9 @@ call plug#end()
 set nu              " line numbers
 set rnu             " relative numbers
 set scrolloff=5
+set tabstop=4       " tab spaces
+set expandtab       " 
+set shiftwidth=4    " indent spaces
 
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
@@ -50,11 +53,15 @@ let g:lightline = {
 	\'colorscheme':'Tomorrow_Night_Bright',
 	\'active':{
 	\   'left':[[ 'mode','paste'],
-	\	    [ 'gitbranch','cocstatus'],['filename','modifed']]
+	\	        [ 'gitbranch','cocstatus'], ['relativepath'],['modified']],
+    \   'right': [ [ 'syntastic', 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
 	\},
 	\'component_function': {
-	\  'costatus': 'coc#status',
-	\  'gitbranch': 'FugitiveHead'
+	\   'costatus': 'coc#status',
+	\   'gitbranch': 'FugitiveHead',
+    \   'syntastic': 'SyntasticStatuslineFlag',
 	\},
 	\}
 
