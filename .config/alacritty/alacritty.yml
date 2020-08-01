@@ -38,14 +38,14 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: Hasklug Nerd Font
+    #family: Hasklug Nerd Font
     #family: GoMono NF
-    #family: Hurmit Nerd Font
+    family: Hurmit Nerd Font
     style: Regular
 
   # Bold font face
   bold:
-    family: Hasklug Nerd Font
+    #family: Hasklug Nerd Font
     #family: GoMono NF
     #family: Hurmit Nerd Font
     style: Bold
