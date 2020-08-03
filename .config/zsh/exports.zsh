@@ -1,4 +1,3 @@
-
 EDITOR="nvim"
 export TERM="xterm-256color"
 
@@ -6,13 +5,11 @@ export TERM="xterm-256color"
 export EDITOR=nvim
 export HISTCONTROL=ignoreboth
 
-# Modifica colores de 'EXA'
-#export EXA_COLORS=''
-
 # GO
 export GOBBIN=/usr/local/go/bin
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
+export GOPATH=$GOPATH:$HOME/gowork
 
 # NodeJs
 #VERSION='v12.18.3'
