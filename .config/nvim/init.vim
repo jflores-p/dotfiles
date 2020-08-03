@@ -23,6 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " completion tool
 " [[ Extra tools ]]
 Plug 'vifm/vifm.vim'                            " file-manger inside nvim
 Plug 'vimwiki/vimwiki'                          " own wiki
+Plug 'ftplug/vimwiki.vim'
 Plug 'ap/vim-css-color' 			" HEXA-color viewer
 
 call plug#end()
@@ -38,12 +39,20 @@ set scrolloff=5
 set tabstop=4       " tab spaces
 set expandtab       " 
 set shiftwidth=4    " indent spaces
+set splitbelow splitright
+set mouse=nvi
 
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
 " ----------------------------------------------------------------------------------------
 
 :imap ii <Esc>
+ 
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 
 " ----------------------------------------------------------------------------------------
 " ==> Lightline
@@ -80,7 +89,9 @@ map <leader>tv :TabVifm<CR>
 " ==> VimWiki
 " ----------------------------------------------------------------------------------------
 
-let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
+"let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
+let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'default', 'ext':'.wiki'}]
+map <leader>ww :VimWikiIndex<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> coc.nvim default settings
