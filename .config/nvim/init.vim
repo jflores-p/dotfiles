@@ -23,7 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " completion tool
 " [[ Extra tools ]]
 Plug 'vifm/vifm.vim'                            " file-manger inside nvim
 Plug 'vimwiki/vimwiki'                          " own wiki
-Plug 'ftplug/vimwiki.vim'
+""Plug 'ftplugin/vimwiki.vim'
 Plug 'ap/vim-css-color' 			" HEXA-color viewer
 
 call plug#end()
@@ -91,7 +91,10 @@ map <leader>tv :TabVifm<CR>
 
 "let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
 let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'default', 'ext':'.wiki'}]
+
 map <leader>ww :VimWikiIndex<CR>
+
+let g:vimwiki_hl_headers = 1
 
 " ----------------------------------------------------------------------------------------
 " ==> coc.nvim default settings
