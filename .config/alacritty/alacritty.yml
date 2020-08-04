@@ -39,29 +39,49 @@ font:
   # Normal (roman) font face
   normal:
     #family: Hasklug Nerd Font
+    #family: BlexMono Nerd Font
     #family: GoMono NF
+    #family: MesloLGSDZ Nerd Font Mono
+    #-------------------------
     family: Hurmit Nerd Font
+    #family: M+ 1p
+    #family: BPmono
     style: Regular
 
   # Bold font face
   bold:
     #family: Hasklug Nerd Font
+    family: BlexMono Nerd Font
     #family: GoMono NF
+    #family: MesloLGS Nerd Font Mono
+    #-------------------------
     #family: Hurmit Nerd Font
+    #family: M+ 1p
+    #family: BPmono
     style: Bold
 
   # Italic font face
   italic:
     family: Hasklug Nerd Font
+    #family: BlexMono Nerd Font
     #family: GoMono NF
+    #family: MesloLGS Nerd Font Mono
+    #-------------------------
     #family: Hurmit Nerd Font
+    #family: M+ 1p
+    #family: BPmono
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: Hasklug Nerd Font
+    #family: Hasklug Nerd Font
+    #family: BlexMono Nerd Font
     #family: GoMono NF
+    family: MesloLGSDZ Nerd Font Mono
+    #-------------------------
     #family: Hurmit Nerd Font
+    #family: M+ 1p
+    #family: BPmono
     style: Bold Italic
 
   # Point size
