@@ -13,7 +13,6 @@ setopt HIST_REDUCE_BLANKS HIST_IGNORE_SPACE
 
 setopt AUTO_CD
 
-autoload -Uz compinit && compinit
 
 ###### EXPORTS ######
 source $ZDOTDIR/exports.zsh
@@ -26,6 +25,10 @@ source $ZDOTDIR/aliases.zsh
 #source $ZDOTDIR/git_prompt.zsh
 
 source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
+
+source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+autoload -Uz compinit && compinit
 colorscript -r
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh//.p10k.zsh.

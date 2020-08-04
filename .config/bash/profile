@@ -1,9 +1,21 @@
-# Load the shell dotfiles, and then some:
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.bash_{aliases,prompt,exports}; do
+#!/bin/bash
+#
+HISTFILE=$HOME/.cache/bash/history
+
+
+files=(
+        $HOME/.config/zsh/aliases.zsh 
+        $HOME/.config/zsh/exports.zsh 
+        $HOME/.config/bash/prompt
+        )
+
+
+
+for file in ${files[*]}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+
 
 colorscript -r
 
