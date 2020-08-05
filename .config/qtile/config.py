@@ -74,7 +74,9 @@ colors = [["#282a36","#282a36"],    # 0  # panel background
           ["#668bd7","#668bd7"],    # 6  # memory widget
           ["#7197E7","#7197E7"],    # 7  # net widget
           ["#ff5555","#ff5555"],    # 8  # not used ws
-          ["#fda55c","#fda55c"]]    # 9  # 
+          ["#fda55c","#fda55c"],    # 9  # 
+          ["#09b5a6","#09b5a6"],    # 10 #
+          ["#ebccda","#ebccda"]]    # 11 #
 
 ### GROUPS ###
 
@@ -142,30 +144,44 @@ screens = [
                     foreground = colors[3],
                     background = colors[1]
                     ),
-                widget.WindowName(),
+                widget.WindowName(
+                    show_state = False
+                    ),
+                widget.TextBox(text='', foreground = colors[9]),
                 widget.CPU(
                     format = "CPU {load_percent}% ",
                     update_interval = 0.75,
-                    foreground = colors[9],
+                    foreground = colors[9]
                     ),
+                widget.TextBox(text='|', foreground = colors[1]),
+                widget.TextBox(text='ﱨ', foreground = colors[7]),
                 widget.Memory(
-                    foreground = colors[7],
+                    foreground = colors[7]
                     ),
+                widget.TextBox(text='|', foreground = colors[1]),
+                widget.TextBox(text=' ', foreground = colors[8]),
                 widget.DF(
                     partition = "/home/joako/",
                     format = "({uf}{m}|{r:.0f}%)",
                     visible_on_warn = False,
                     foreground = colors[8],
                     ),
+                widget.TextBox(text='|', foreground = colors[1]),
                 widget.Net(
                     interface = "enp0s3",
                     format = "{down} ↓↑{up} ",
-                    foreground = colors[6]
+                    foreground = colors[11]
                     ),
+                widget.TextBox(text='|', foreground = colors[1]),
+                widget.TextBox(text='墳', foreground = colors[10]),
+                widget.Volume(
+                    foreground = colors[10]
+                    ),
+                widget.TextBox(text='|', foreground = colors[1]),
+                widget.TextBox(text='|', foreground = colors[3]),
                 widget.Clock(
                     font = "Hurmit Nerd Font Bold",
                     foreground = colors[3],
-                    background = colors[0],
                     format = "%A, %B %d - [%H:%M]"
                     ),
                 widget.Sep(
