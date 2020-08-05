@@ -37,4 +37,12 @@ alias vifm='./.config/vifm/scripts/vifmrun'
 alias top='htop'
 
 alias nv='nvim'
+    
 
+# https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Installation_and_recovery
+f(){
+    pacman -Qqe > $HOME/.pkgs/pkglist;
+    pacman -Qqem > $HOME/.pkgs/yaylist;
+}
+
+alias pkglist='f'
