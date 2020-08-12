@@ -13,6 +13,8 @@ setopt HIST_REDUCE_BLANKS HIST_IGNORE_SPACE
 
 setopt AUTO_CD
 
+bindkey -v
+
 autoload -Uz compinit && compinit
 
 ###### EXPORTS ######
