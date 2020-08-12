@@ -178,7 +178,6 @@ screens = [
                     foreground = colors[10]
                     ),
                 widget.TextBox(text='|', foreground = colors[1]),
-                widget.TextBox(text='|', foreground = colors[3]),
                 widget.Clock(
                     font = "Hurmit Nerd Font Bold",
                     foreground = colors[3],

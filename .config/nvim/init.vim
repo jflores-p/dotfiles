@@ -23,8 +23,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " completion tool
 " [[ Extra tools ]]
 Plug 'vifm/vifm.vim'                            " file-manger inside nvim
 Plug 'vimwiki/vimwiki'                          " own wiki
-""Plug 'ftplugin/vimwiki.vim'
 Plug 'ap/vim-css-color' 			" HEXA-color viewer
+Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
@@ -46,6 +46,28 @@ set mouse=nvi
 " ==> Some especial keys
 " ----------------------------------------------------------------------------------------
 
+set termguicolors
+
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'override' : {
+  \         'color00' : ['#263238', ''],
+  \         'linenumber_bg' : ['#263238', ''],
+  \         'linenumber_fg' : ['#ffcb6b',''],
+  \         'cursorlinenr_bg' : ['#263238',''],
+  \         'cursorlinenr_fg' : ['#ffcb6b','']
+  \       }
+  \     }
+  \   }
+  \ }
+set background=dark
+colorscheme PaperColor
+
+" ----------------------------------------------------------------------------------------
+" ==> Some especial keys
+" ----------------------------------------------------------------------------------------
+
 :imap ii <Esc>
  
 map <C-h> <C-w>h
@@ -53,6 +75,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" ----------------------------------------------------------------------------------------
+" ==> Vim-go
+" ----------------------------------------------------------------------------------------
+
+let g:go_hightlight_string_spellcheck = 0
 
 " ----------------------------------------------------------------------------------------
 " ==> Lightline
