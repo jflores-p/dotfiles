@@ -183,7 +183,7 @@ schemes:
       cyan:    '#89ddff'
       white:   '#ffffff'  # Arbitrary
 
-colors: *Matherial_Theme   
+colors: *Matherial_Theme
 
 # Background opacity
 #
