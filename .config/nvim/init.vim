@@ -26,6 +26,12 @@ Plug 'vimwiki/vimwiki'                          " own wiki
 Plug 'ap/vim-css-color' 			" HEXA-color viewer
 Plug 'NLKNguyen/papercolor-theme'
 
+"Plug 'ycm-core/YouCompleteMe'
+Plug 'scrooloose/nerdtree/'
+"Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
+
+
 call plug#end()
 
 
@@ -41,6 +47,8 @@ set expandtab       "
 set shiftwidth=4    " indent spaces
 set splitbelow splitright
 set mouse=nvi
+
+let g:deoplete#enable_at_startup = 1
 
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
@@ -79,7 +87,8 @@ map <C-l> <C-w>l
 " ==> Vim-go
 " ----------------------------------------------------------------------------------------
 
-let g:go_hightlight_string_spellcheck = 0
+let g:go_hightlight_string_spellcheck = 1
+:map <F5> :w<CR>:GoRun<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> Lightline
