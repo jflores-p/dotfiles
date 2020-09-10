@@ -38,20 +38,21 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    #family: Hasklug Nerd Font
+    family: Hasklug Nerd Font Mono
+    family: Hasklig Medium
     #family: BlexMono Nerd Font
     #family: GoMono NF
     #family: MesloLGSDZ Nerd Font Mono
     #-------------------------
-    family: Hurmit Nerd Font
+    #family: Hurmit Nerd Font
     #family: M+ 1p
     #family: BPmono
     style: Regular
 
   # Bold font face
   bold:
-    #family: Hasklug Nerd Font
-    family: BlexMono Nerd Font
+    family: Hasklug Nerd Font Mono
+    #family: BlexMono Nerd Font
     #family: GoMono NF
     #family: MesloLGS Nerd Font Mono
     #-------------------------
@@ -62,7 +63,7 @@ font:
 
   # Italic font face
   italic:
-    family: Hasklug Nerd Font
+    family: Hasklug Nerd Font Mono
     #family: BlexMono Nerd Font
     #family: GoMono NF
     #family: MesloLGS Nerd Font Mono
@@ -74,10 +75,10 @@ font:
 
   # Bold italic font face
   bold_italic:
-    #family: Hasklug Nerd Font
+    family: Hasklug Nerd Font Mono
     #family: BlexMono Nerd Font
     #family: GoMono NF
-    family: MesloLGSDZ Nerd Font Mono
+    #family: MesloLGSDZ Nerd Font Mono
     #-------------------------
     #family: Hurmit Nerd Font
     #family: M+ 1p
@@ -85,7 +86,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 11
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

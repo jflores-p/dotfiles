@@ -83,7 +83,7 @@ colors = [["#282a36","#282a36"],    # 0  # panel background
 group_names = ["WWW", "GO", "TERM", "FILE", "EXT"]
 
 groups = [Group(name = 'a', layout = 'max', label = 'WWW'),
-          Group(name = 's', layout = 'max', label = 'GO'),
+          Group(name = 's', layout = 'monadtall', label = 'GO'),
           Group(name = 'd', layout = 'monadtall', label = 'TERM'),
           Group(name = 'f', layout = 'max', label = 'FILE')]
 

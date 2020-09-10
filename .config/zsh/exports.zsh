@@ -6,10 +6,16 @@ export EDITOR=nvim
 export HISTCONTROL=ignoreboth
 
 # GO
-export GOBBIN=/usr/local/go/bin
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export GOPATH=$GOPATH:$HOME/gowork
+GOBBIN=/usr/local/go/bin
+
+GOPATH1=$HOME/go
+GOBIN1=$GOPATH1/bin
+
+GOPATH2=$HOME/gowork
+GOBIN2=$GOPATH2/bin
+
+export GOPATH=$GOPATH2:$GOPATH1
+export GOBIN=$GOBIN1
 
 # NodeJs
 #VERSION='v12.18.3'
@@ -21,5 +27,5 @@ export MANPATH=/usr/share/man
 
 
 # PATH -- configuracion base y despues añade extras
-PATH="/home/joako/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+PATH="/home/joako/bin:/home/joako/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 export PATH=$PATH:$GOBBIN:$GOBIN
