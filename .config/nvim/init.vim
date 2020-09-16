@@ -31,6 +31,7 @@ Plug 'scrooloose/nerdtree/'
 "Plug 'davidhalter/jedi-vim'
 Plug 'deoplete-plugins/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
 
+Plug 'dracula/vim', {'as':'dracula'}
 
 call plug#end()
 
@@ -70,7 +71,9 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 set background=dark
-colorscheme PaperColor
+" colorscheme PaperColor
+colorscheme dracula
+
 
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
