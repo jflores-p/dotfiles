@@ -256,7 +256,7 @@ background_opacity: 0.95
 mouse:
   url:
     launcher:
-      program: vivaldi-stable
+        program: firefox
     #  args: []
 
 key_bindings:
