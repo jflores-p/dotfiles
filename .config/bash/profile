@@ -2,6 +2,7 @@
 #
 HISTFILE=$HOME/.cache/bash/history
 
+[[ $(fgconsole 2> /dev/null ) == 1 ]] && exec startx -- vt1
 
 files=(
         $HOME/.config/zsh/aliases.zsh 

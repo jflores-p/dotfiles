@@ -1,5 +1,9 @@
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
+
+[[ $(fgcosole 2> /dev/null) == 1 ]] && exec startx -- vt1 
+
+
 HYPHEN_INSENSITIVE="true"
 
 HISTSIZE=10000
