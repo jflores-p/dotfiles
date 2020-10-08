@@ -12,6 +12,12 @@
     # Delete a branch
     lop = "!d() { git branch -d \"$1\" 2> /dev/null ; }; d"
 
+    # Log graph
+    lg = !git log --oneline --decorate --all --graph
+
+    # Log graph
+    llg = !git log --decorate --all --graph
+
 [user]
 
 	email = joaquin_fp2000@hotmail.com

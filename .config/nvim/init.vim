@@ -90,7 +90,15 @@ map <C-l> <C-w>l
 " ==> Vim-go
 " ----------------------------------------------------------------------------------------
 
-let g:go_hightlight_string_spellcheck = 1
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
+
+
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 0
+let g:go_highlight_function_parameters = 0
+let g:go_highlight_types = 0
+let g:go_highlight_fields = 0
 :map <F5> :w<CR>:GoRun<CR>
 
 " ----------------------------------------------------------------------------------------
