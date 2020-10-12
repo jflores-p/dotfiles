@@ -11,7 +11,7 @@ GOBBIN=/usr/local/go/bin
 GOPATH1=$HOME/go
 GOBIN1=$GOPATH1/bin
 
-GOPATH2=$HOME/gowork
+GOPATH2=$HOME/godev
 GOBIN2=$GOPATH2/bin
 
 export GOPATH=$GOPATH1:$GOPATH2
