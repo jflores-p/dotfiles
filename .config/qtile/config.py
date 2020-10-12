@@ -15,7 +15,7 @@ myTerm = "alacritty"
 
 keys = [
     # Applications
-    Key([mod, "shift"], "Return", lazy.spawn("rofi -show run"),
+    Key([mod, "shift"], "Return", lazy.spawn("rofi -show drun"),
         desc='rofi launcher'),
 
     Key([mod, alt], "e", lazy.spawn(myTerm+" -e sh ./.config/vifm/scripts/vifmrun"),
