@@ -14,45 +14,54 @@ syntax on
 
 call plug#begin('~/.local/share/nvim/plugged')
 " [[ Golang ]]
-Plug 'fatih/vim-go'
-" [[ Power Line ]]
+Plug 'fatih/vim-go', {'tag': 'v1.24'}
+
+" [[ Aesthetics ]]
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'dracula/vim', {'as':'dracula'}
+Plug 'ryanoasis/vim-devicons'
+
 " [[ Writting tools ]]
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " completion tool
+Plug 'preservim/nerdcommenter' 
+
 " [[ Extra tools ]]
-Plug 'vifm/vifm.vim'                            " file-manger inside nvim
 Plug 'vimwiki/vimwiki'                          " own wiki
-Plug 'ap/vim-css-color' 			" HEXA-color viewer
+Plug 'ap/vim-css-color' 		            	" HEX-color viewer
 Plug 'NLKNguyen/papercolor-theme'
 
-"Plug 'ycm-core/YouCompleteMe'
-Plug 'scrooloose/nerdtree/'
-"Plug 'davidhalter/jedi-vim'
-Plug 'deoplete-plugins/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
-
-Plug 'dracula/vim', {'as':'dracula'}
+" [[ File visualizer ]]
+Plug 'vifm/vifm.vim'                            " file-manger inside nvim
+Plug 'preservim/nerdtree/'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
-
 
 " ----------------------------------------------------------------------------------------
 " ==> General settings
 " ----------------------------------------------------------------------------------------
 
-set nu              " line numbers
-set rnu             " relative numbers
+set number          " line numbers
+set relativenumber  " relative numbers
 set scrolloff=5
 set tabstop=4       " tab spaces
 set expandtab       " 
 set shiftwidth=4    " indent spaces
 set splitbelow splitright
+set encoding=UTF-8
 set mouse=nvi
+set updatetime=100
 
 let g:deoplete#enable_at_startup = 1
 
+highlight CursorLineNR guifg=#cc99ff ctermfg=2
+highlight LineNR guifg=#cc99ff
+hi LineNr       term=bold cterm=bold ctermfg=2 guifg=Grey guibg=Grey90
+
 " ----------------------------------------------------------------------------------------
-" ==> Some especial keys
+" ==> Some fancy settings
 " ----------------------------------------------------------------------------------------
 
 set termguicolors
@@ -75,6 +84,8 @@ set background=dark
 colorscheme dracula
 
 
+highlight Comment gui=bold gui=italic
+
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
 " ----------------------------------------------------------------------------------------
@@ -93,12 +104,17 @@ map <C-l> <C-w>l
 let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 
 
-let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 0
-let g:go_highlight_function_parameters = 0
-let g:go_highlight_types = 0
-let g:go_highlight_fields = 0
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+
+
 :map <F5> :w<CR>:GoRun<CR>
 
 " ----------------------------------------------------------------------------------------
@@ -106,7 +122,7 @@ let g:go_highlight_fields = 0
 " ----------------------------------------------------------------------------------------
 
 let g:lightline = {
-	\'colorscheme':'Tomorrow_Night_Bright',
+	\'colorscheme':'dracula',
 	\'active':{
 	\   'left':[[ 'mode','paste'],
 	\	        [ 'gitbranch','cocstatus'], ['relativepath'],['modified']],
@@ -133,30 +149,76 @@ map <leader>dv :DiffVifm<CR>
 map <leader>tv :TabVifm<CR>
 
 " ----------------------------------------------------------------------------------------
+" ==> NERDTree
+" ----------------------------------------------------------------------------------------
+
+map <C-b> :NERDTreeToggle<CR>
+
+" ----------------------------------------------------------------------------------------
+" ==> NERDCommenter
+" ----------------------------------------------------------------------------------------
+
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+"let g:NERDCustomDelimiters = { 'go': { 'left': '/**','right': '*/' } }
+
+map <space>cc <plug>NERDCommenterToggle
+nmap <space>ca <plug>NERDCommenterAppend
+
+" ----------------------------------------------------------------------------------------
+" ==> GitGutter
+" ----------------------------------------------------------------------------------------
+
+highlight GitGutterAdd    guifg=#05a167 ctermfg=green
+highlight GitGutterChange guifg=#fff8b7 ctermfg=yellow
+highlight GitGutterDelete guifg=#ef4135 ctermfg=red
+
+set signcolumn=auto
+
+let g:gitgutter_enabled = 1
+let g:gitgutter_signs = 1
+let g:gitgutter_map_keys = 0
+
+let g:gitgutter_git_executable ="/usr/bin/git"
+
+" ----------------------------------------------------------------------------------------
 " ==> VimWiki
 " ----------------------------------------------------------------------------------------
 
 "let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
 let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'default', 'ext':'.wiki'}]
 
-map <leader>ww :VimWikiIndex<CR>
+map <leader>ww :VimwikiIndex<CR>
 
 let g:vimwiki_hl_headers = 1
+highlight VimwikiHeader1 guifg=#ef4135
+highlight VimwikiHeader2 guifg=#05a167
+highlight VimwikiHeader3 guifg=#1975d1
+highlight VimwikiHeader4 guifg=#cc99ff
+highlight VimwikiHeader5 guifg=#93ffff
+highlight VimwikiHeader6 guifg=#fff8b7
 
 " ----------------------------------------------------------------------------------------
 " ==> coc.nvim default settings
 " ----------------------------------------------------------------------------------------
+
+"" RUN :CocInstall coc-snippets
+let g:coc_global_extensions = [
+    \ 'coc-pairs',
+    \]
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " if hidden is not set, TextEdit might fail.
 set hidden
 " Better display for messages
 set cmdheight=2
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+" set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 " always show signcolumns
-set signcolumn=no
+" set signcolumn=no
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -213,3 +275,5 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'

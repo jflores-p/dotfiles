@@ -5,5 +5,9 @@
      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
      "filetypes": ["go"]
    }
- }
+ },
+ "suggest.noselect": false,
+ "coc.preferences.formatOnSaveFiletypes":[
+    "golang"
+ ]
 }
