@@ -27,6 +27,5 @@
 
 	helper = store
 
-[init]
-
-    templateDir = ~/.config/git/template/
+#[init]
+#    templateDir = ~/.config/git/template/
