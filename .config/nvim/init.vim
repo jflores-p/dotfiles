@@ -4,8 +4,6 @@
 
 set nocompatible 		" be iMproved
 filetype plugin indent on
-filetype plugin on
-filetype off
 syntax on
 
 " ----------------------------------------------------------------------------------------
@@ -37,6 +35,8 @@ Plug 'preservim/nerdtree/'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'plasticboy/vim-markdown'
+
 call plug#end()
 
 " ----------------------------------------------------------------------------------------
@@ -46,19 +46,16 @@ call plug#end()
 set number          " line numbers
 set relativenumber  " relative numbers
 set scrolloff=5
+set signcolumn=auto
 set tabstop=4       " tab spaces
+set softtabstop=4   " tab spaces
 set expandtab       " 
+set smartindent     " auto indet
 set shiftwidth=4    " indent spaces
 set splitbelow splitright
 set encoding=UTF-8
 set mouse=nvi
 set updatetime=100
-
-let g:deoplete#enable_at_startup = 1
-
-highlight CursorLineNR guifg=#cc99ff ctermfg=2
-highlight LineNR guifg=#cc99ff
-hi LineNr       term=bold cterm=bold ctermfg=2 guifg=Grey guibg=Grey90
 
 " ----------------------------------------------------------------------------------------
 " ==> Some fancy settings
@@ -83,9 +80,6 @@ set background=dark
 " colorscheme PaperColor
 colorscheme dracula
 
-
-highlight Comment gui=bold gui=italic
-
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
 " ----------------------------------------------------------------------------------------
@@ -96,6 +90,12 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
+
+map <space><Tab> :tabNext<CR>
+map <space>w :tabclose<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> Vim-go
@@ -146,13 +146,14 @@ map <leader>vv :Vifm<CR>
 map <leader>vs :VsplitVifm<CR>
 map <leader>sp :SplitVifm<CR>
 map <leader>dv :DiffVifm<CR>
-map <leader>tv :TabVifm<CR>
+
+map <space>t :TabVifm<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> NERDTree
 " ----------------------------------------------------------------------------------------
 
-map <C-b> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> NERDCommenter
@@ -173,8 +174,6 @@ highlight GitGutterAdd    guifg=#05a167 ctermfg=green
 highlight GitGutterChange guifg=#fff8b7 ctermfg=yellow
 highlight GitGutterDelete guifg=#ef4135 ctermfg=red
 
-set signcolumn=auto
-
 let g:gitgutter_enabled = 1
 let g:gitgutter_signs = 1
 let g:gitgutter_map_keys = 0
@@ -185,18 +184,23 @@ let g:gitgutter_git_executable ="/usr/bin/git"
 " ==> VimWiki
 " ----------------------------------------------------------------------------------------
 
-"let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
-let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'default', 'ext':'.wiki'}]
+let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
 
 map <leader>ww :VimwikiIndex<CR>
+map <leader>vw :vsplit ~/vimwiki/index.md<CR>:vertical resize 40<CR>
 
 let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
+
 highlight VimwikiHeader1 guifg=#ef4135
 highlight VimwikiHeader2 guifg=#05a167
 highlight VimwikiHeader3 guifg=#1975d1
 highlight VimwikiHeader4 guifg=#cc99ff
 highlight VimwikiHeader5 guifg=#93ffff
 highlight VimwikiHeader6 guifg=#fff8b7
+
+highlight VimwikiList guifg=#ff79c6
+highlight VimwikiLink guifg=#75f2e7 gui=underline
 
 " ----------------------------------------------------------------------------------------
 " ==> coc.nvim default settings
@@ -275,5 +279,3 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
-let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
