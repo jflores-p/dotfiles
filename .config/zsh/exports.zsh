@@ -26,8 +26,8 @@ export GOBIN=$GOBIN1
 export MANPATH=/usr/share/man
 
 # JAVA
+# adoptopenjdk
 export JAVA_HOME="/opt/jdk-11.0.8+10"
-#export JDK_HOME=/usr/lib/jvm/java-11-openjdk
 
 # PATH -- configuracion base y despues añade extras
 PATH="/home/joako/bin:/home/joako/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
