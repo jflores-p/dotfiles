@@ -64,7 +64,7 @@ font:
 
   # Italic font face
   italic:
-    family: Hasklug Nerd Font Mono
+    # family: Hasklug Nerd Font Mono
     # family: BlexMono Nerd Font
     # family: GoMono NF
     # family: MesloLGS Nerd Font Mono
@@ -76,7 +76,7 @@ font:
 
   # Bold italic font face
   bold_italic:
-    family: Hasklug Nerd Font
+    # family: Hasklug Nerd Font
     # family: Hasklug NF
     # family: BlexMono Nerd Font
     # family: GoMono NF
