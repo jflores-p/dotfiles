@@ -35,6 +35,9 @@ Plug 'preservim/nerdtree/'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+
 Plug 'plasticboy/vim-markdown'
 
 call plug#end()
@@ -45,7 +48,7 @@ call plug#end()
 
 set number          " line numbers
 set relativenumber  " relative numbers
-set scrolloff=5
+set scrolloff=8
 set signcolumn=auto
 set tabstop=4       " tab spaces
 set softtabstop=4   " tab spaces
@@ -56,6 +59,7 @@ set splitbelow splitright
 set encoding=UTF-8
 set mouse=nvi
 set updatetime=100
+let mapleader=','
 
 " ----------------------------------------------------------------------------------------
 " ==> Some fancy settings
@@ -96,6 +100,34 @@ xnoremap J :move '>+1<CR>gv-gv
 
 map <space><Tab> :tabNext<CR>
 map <space>w :tabclose<CR>
+
+" ----------------------------------------------------------------------------------------
+" ==> Goyo - Limelight
+" ----------------------------------------------------------------------------------------
+
+function! Goyo_enter()
+    Goyo 120
+    set noshowmode
+    set noshowcmd
+endfunction
+
+function! Goyo_LL()
+    call Goyo_enter()
+    Limelight
+    set scrolloff=20
+endfunction
+
+function! Goyo_out()
+    set showmode
+    set showcmd
+    set scrolloff=8
+    Limelight!
+    Goyo
+endfunction
+
+nmap <leader>g :call Goyo_enter()<CR>
+nmap <leader>l :call Goyo_LL()<CR>
+nmap <leader><space> :call Goyo_out()<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> Vim-go
@@ -141,7 +173,6 @@ let g:lightline = {
 " ==> VimVifm
 " ----------------------------------------------------------------------------------------
 
-let mapleader=','
 map <leader>vv :Vifm<CR>
 map <leader>vs :VsplitVifm<CR>
 map <leader>sp :SplitVifm<CR>
@@ -192,12 +223,12 @@ map <leader>vw :vsplit ~/vimwiki/index.md<CR>:vertical resize 40<CR>
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 
-highlight VimwikiHeader1 guifg=#ef4135
-highlight VimwikiHeader2 guifg=#05a167
-highlight VimwikiHeader3 guifg=#1975d1
-highlight VimwikiHeader4 guifg=#cc99ff
-highlight VimwikiHeader5 guifg=#93ffff
-highlight VimwikiHeader6 guifg=#fff8b7
+highlight VimwikiHeader1 guifg=#ef4135 cterm=bold gui=bold
+highlight VimwikiHeader2 guifg=#05a167 cterm=bold gui=bold
+highlight VimwikiHeader3 guifg=#1975d1 cterm=bold gui=bold
+highlight VimwikiHeader4 guifg=#cc99ff cterm=bold gui=bold
+highlight VimwikiHeader5 guifg=#93ffff cterm=bold gui=bold
+highlight VimwikiHeader6 guifg=#fff8b7 cterm=bold gui=bold
 
 highlight VimwikiList guifg=#ff79c6
 highlight VimwikiLink guifg=#75f2e7 gui=underline
