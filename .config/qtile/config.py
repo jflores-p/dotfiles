@@ -83,9 +83,13 @@ colors = [["#282a36","#282a36"],    # 0  # panel background
 group_names = ["WWW", "GO", "TERM", "FILE", "EXT"]
 
 groups = [Group(name = 'a', layout = 'max', label = 'WWW'),
-          Group(name = 's', layout = 'monadtall', label = 'GO'),
+          Group(name = 's', layout = 'monadtall', label = 'DEV'),
           Group(name = 'd', layout = 'monadtall', label = 'TERM'),
-          Group(name = 'f', layout = 'max', label = 'FILE')]
+          Group(name = 'f', layout = 'max', label = 'FILE'),
+          Group(name = 'z', layout = 'monadtall', label = 'DOCKER'),
+          Group(name = 'x', layout = 'monadtall', label = 'WBENCH'),
+          Group(name = 'c', layout = 'monadtall', label = 'POST'),
+          Group(name = 'v', layout = 'monadtall', label = 'EXTRA')]
 
 for i in groups:
     keys.extend([

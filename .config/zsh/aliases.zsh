@@ -38,6 +38,9 @@ alias top='htop'
 
 alias nv='nvim'
     
+# docker
+alias dls='docker image ls'
+alias dcs='docker ps -a'
 
 # https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Installation_and_recovery
 f(){
