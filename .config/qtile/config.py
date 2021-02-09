@@ -14,24 +14,30 @@ alt = "mod1" #LEFT-ALT
 myTerm = "alacritty"
 
 keys = [
-    # Applications
-    Key([mod, "shift"], "Return", lazy.spawn("rofi -show drun"),
-        desc='rofi launcher'),
 
-    Key([mod, alt], "e", lazy.spawn(myTerm+" -e sh ./.config/vifm/scripts/vifmrun"),
+    # Aplicaciones
+    Key([mod, "shift"], "Return", lazy.spawn("rofi -modi drun -show drun -display-drun \"Run: \" -matching  \"glob\" -drun-display-format \"{name}\" "),
+        desc='Rofi launcher'),
+
+    Key([mod], "e", lazy.spawn(myTerm+" -e sh ./.config/vifm/scripts/vifmrun"),
         desc='Vifm with image preiew'),
 
-     Key([mod, alt], "q", lazy.spawn("brave"),
+                #tecla superior al TAB
+    Key([mod], "masculine", lazy.spawn("firefox"),
         desc='Vifm with image preiew'),
 
-    # Switch between windows in current stack pane
-    Key([mod], "k", lazy.layout.down()),
-    Key([mod], "j", lazy.layout.up()),
+    Key([alt], "F1", lazy.spawn(myTerm+" -e betterlockscreen -l dim")),
+     
+    ## Flujo de ventanas
+    Key([mod], "j", lazy.layout.down(),
+        desc='Switch down windows in current stack pane'),
+    Key([mod], "k", lazy.layout.up(),
+        desc='Switch up windows in current stack pane'),
 
-    Key([mod, "shift"], "k", lazy.layout.shuffle_down(),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
         desc='Move windows down in current stack'),
 
-    Key([mod, "shift"], "j", lazy.layout.shuffle_up(),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up(),
          desc='Move windows up in current stack'),
 
     Key([mod], "plus", lazy.layout.grow(), lazy.layout.increase_nmaster(),
@@ -46,21 +52,38 @@ keys = [
     Key([mod, "control"], "Return", lazy.layout.toggle_split(),
         desc='Toggle between split and unsplit sides of stack'),
 
-    # Switch window focus to other pane(s) of stack
-    Key([alt], "Tab", lazy.layout.next()),
+    ## Control de ventanas
+    Key([alt], "Tab", lazy.layout.next(),
+        desc='Switch window focus to other pane(s) of stack'),
 
     Key([mod, "shift"], "space", lazy.layout.rotate(), lazy.layout.flip(),
         desc='Switch which side main pane occupies (XmonadTall)'),
 
     Key([mod], "Return", lazy.spawn(myTerm)),
 
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout()),
-    Key([mod], "w", lazy.window.kill()),
+    Key([mod], "Tab", lazy.next_layout(),
+        desc='Toggle between different layouts as defined below'),
 
+    Key([mod], "w", lazy.window.kill(),
+        desc='Kill focused window'),
+    
+    Key([mod, alt], "f", lazy.window.toggle_floating(),
+        desc='toggle floating'),
+
+
+    ## Control qtile
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+
+
+    ## Change the volume if your keyboard has special volume keys.
+    Key([], "XF86AudioRaiseVolume",
+        lazy.spawn("amixer set Master 2%+ -q")),
+    Key([], "XF86AudioLowerVolume",
+        lazy.spawn("amixer set Master 2%- -q")),
+    Key([], "XF86AudioMute",
+        lazy.spawn("amixer set Master toggle -q")),
 ]
 
 ### BAR COLORS ###
@@ -88,8 +111,8 @@ groups = [Group(name = 'a', layout = 'max', label = 'WWW'),
           Group(name = 'f', layout = 'max', label = 'FILE'),
           Group(name = 'z', layout = 'monadtall', label = 'DOCKER'),
           Group(name = 'x', layout = 'monadtall', label = 'WBENCH'),
-          Group(name = 'c', layout = 'monadtall', label = 'POST'),
-          Group(name = 'v', layout = 'monadtall', label = 'EXTRA')]
+          Group(name = 'c', layout = 'monadtall', label = 'OBS'),
+          Group(name = 'v', layout = 'monadtall', label = 'GAMES')]
 
 for i in groups:
     keys.extend([
@@ -170,22 +193,29 @@ screens = [
                     visible_on_warn = False,
                     foreground = colors[8],
                     ),
+                widget.DF(
+                    partition = "/etc/",
+                    format = "({uf}{m}|{r:.0f}%)",
+                    visible_on_warn = False,
+                    foreground = colors[8],
+                    ),
                 widget.TextBox(text='|', foreground = colors[1]),
                 widget.Net(
-                    interface = "enp0s3",
+                    interface = "enp4s0",
                     format = "{down} ↓↑{up} ",
                     foreground = colors[11]
                     ),
                 widget.TextBox(text='|', foreground = colors[1]),
                 widget.TextBox(text='墳', foreground = colors[10]),
                 widget.Volume(
+                    device = 'default',
                     foreground = colors[10]
                     ),
                 widget.TextBox(text='|', foreground = colors[1]),
                 widget.Clock(
                     font = "Hurmit Nerd Font Bold",
                     foreground = colors[3],
-                    format = "%A, %B %d - [%H:%M]"
+                    format = "%A, %d %B - [%H:%M]"
                     ),
                 widget.Sep(
                     linewidth = 0,
