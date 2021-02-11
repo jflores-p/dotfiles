@@ -3,10 +3,10 @@
 [[ ! -d "$HOME/.local/share/fonts" ]] && mkdir -p $HOME/.local/share/fonts
 cd $HOME/.local/share/fonts
 
-declare -a fonts=("JetBrainsMono" "Hasklig" "Hermit" "RobotoMono" "FiraCode")
+declare -a FONTS=("JetBrainsMono" "Hasklig" "Hermit" "RobotoMono" "FiraCode")
 declare VERSION="v2.1.0"
 
-for font in "${fonts[@]}"
+for font in "${FONTS[@]}"
 do
     # si la fuente ya esta descargada, no se vuelve a descargar
     if [ ! -d $font ] 
