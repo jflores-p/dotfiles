@@ -24,7 +24,13 @@ keys = [
 
                 #tecla superior al TAB
     Key([mod], "masculine", lazy.spawn("firefox"),
-        desc='Vifm with image preiew'),
+        desc='Launch Firefox'),
+
+    Key([mod], "l", lazy.spawn("discord"),
+        desc='Launch Discord'),
+
+    Key([mod], "m", lazy.spawn("mailspring"),
+        desc='Launch MailSpring'),
 
     Key([alt], "F1", lazy.spawn(myTerm+" -e betterlockscreen -l dim")),
      
@@ -109,8 +115,8 @@ groups = [Group(name = 'a', layout = 'max', label = 'WWW'),
           Group(name = 's', layout = 'monadtall', label = 'DEV'),
           Group(name = 'd', layout = 'monadtall', label = 'TERM'),
           Group(name = 'f', layout = 'max', label = 'FILE'),
-          Group(name = 'z', layout = 'monadtall', label = 'DOCKER'),
-          Group(name = 'x', layout = 'monadtall', label = 'WBENCH'),
+          Group(name = 'z', layout = 'monadtall', label = 'DISCORD'),
+          Group(name = 'x', layout = 'monadtall', label = 'MAIL'),
           Group(name = 'c', layout = 'monadtall', label = 'OBS'),
           Group(name = 'v', layout = 'monadtall', label = 'GAMES')]
 
@@ -126,7 +132,7 @@ for i in groups:
 layout_theme = {"border_width": 1,
                 "margin" : 1,
                 "border_focus": colors[3][0],
-                "border_normal": colors[7][0] }
+                "border_normal": colors[6][0] }
 
 layouts = [
     layout.Max(**layout_theme),

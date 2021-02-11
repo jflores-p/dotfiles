@@ -6,17 +6,9 @@ export EDITOR=nvim
 export HISTCONTROL=ignoreboth
 
 ## GO
-
-GOPATH=$HOME/go
-GOBIN1=$GOPATH1/bin
-
-# GOPATH2=$HOME/godev
-# GOBIN2=$GOPATH2/bin
-
-# export GOPATH=$GOPATH1:$GOPATH2
-# export GOBIN=$GOBIN1
-
+export GOPATH=$HOME/go
 export GOHOME=/usr/local/go
+export GOROOT=$GOHOME/1.15.7
 
 useGo() {
     local goRoot=$GOHOME/$1
@@ -26,6 +18,7 @@ useGo() {
         return
     fi
     export GOROOT="$goRoot"
+    export PATH=$PATH
     go version
 }
 
@@ -43,10 +36,5 @@ export JAVA_HOME="/opt/jdk-11.0.9+11"
 
 # PATH -- configuracion base y despues añade extras
 PATH="/home/joako/bin:/home/joako/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-export PATH=$PATH:$GOROOT:$JAVA_HOME/bin
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/joako/GoogleCloud/google-cloud-sdk/path.zsh.inc' ]; then . '/home/joako/GoogleCloud/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
+export PATH=$PATH:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin
 

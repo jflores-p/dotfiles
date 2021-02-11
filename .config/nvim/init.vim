@@ -91,17 +91,18 @@ colorscheme dracula
 " ----------------------------------------------------------------------------------------
 
 :imap ii <Esc>
+:imap :: <Esc>:
  
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
 map <space><Tab> :tabNext<CR>
-map <space>w :tabclose<CR>
+map <space>w :bdelete<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> Goyo - Limelight

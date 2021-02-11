@@ -17,9 +17,9 @@ alias refresh='source $HOME/.bashrc'
 
 # Bare git repo alias para dotfiles
 alias ds='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'	# para usar 'dot' enves de 'git' para el bare repository
-alias doa='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME add'	# comando rapido de add
-alias dos='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME status'	# comando rapido de status 
-alias doc='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME commit -m'	# comando rapido de commit
+alias dsa='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME add'	# comando rapido de add
+alias dss='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME status'	# comando rapido de status 
+alias dsc='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME commit -m'	# comando rapido de commit
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -44,8 +44,10 @@ alias dcs='docker ps -a'
 
 # https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Installation_and_recovery
 f(){
-    pacman -Qqe > $HOME/.pkgs/pkglist;
-    pacman -Qqem > $HOME/.pkgs/yaylist;
+    pacman -Qqetn > $HOME/.config/scripts/pkgs_lists/pacman;
+    echo pacman
+    pacman -Qqem > $HOME/.config/scripts/pkgs_lists/yay;
+    echo yay
 }
 
 alias pkglist='f'

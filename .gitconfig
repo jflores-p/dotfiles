@@ -23,9 +23,5 @@
 	email = joaquin_fp2000@hotmail.com
 	name = Joaquin Flores
 
-[credential]
-
-	helper = store
-
-#[init]
-#    templateDir = ~/.config/git/template/
+[init]
+	defaultBranch = main
