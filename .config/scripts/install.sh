@@ -22,8 +22,11 @@ cd $HOME
 echo "Clonando repositorios"
 source ${THIS_PATH}/clone-repos.sh
 
-
 ## 5
 echo "Installando cosas de pip"
 sudo pacman -S python-pip
-pip install ueberzug
+pip install ueberzug psutil
+
+## 6 
+echo "Configurando vifm"
+source ${THIS_PATH}/config-vifm.sh

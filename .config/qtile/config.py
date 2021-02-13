@@ -19,7 +19,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn("rofi -modi drun -show drun -display-drun \"Run: \" -matching  \"glob\" -drun-display-format \"{name}\" "),
         desc='Rofi launcher'),
 
-    Key([mod], "e", lazy.spawn(myTerm+" -e sh ./.config/vifm/scripts/vifmrun"),
+    Key([mod], "e", lazy.spawn(myTerm + " -e vifmrun"),
         desc='Vifm with image preiew'),
 
                 #tecla superior al TAB

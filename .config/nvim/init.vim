@@ -35,6 +35,7 @@ Plug 'preservim/nerdtree/'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 

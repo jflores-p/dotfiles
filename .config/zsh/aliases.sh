@@ -16,10 +16,10 @@ alias update='sudo pacman -Syu'
 alias refresh='source $HOME/.bashrc'
 
 # Bare git repo alias para dotfiles
-alias ds='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'	# para usar 'dot' enves de 'git' para el bare repository
-alias dsa='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME add'	# comando rapido de add
-alias dss='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME status'	# comando rapido de status 
-alias dsc='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME commit -m'	# comando rapido de commit
+alias ds='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'	# para usar 'dot' enves de 'git' para el bare repository
+alias dsa='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME add'	# comando rapido de add
+alias dss='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME status'	# comando rapido de status 
+alias dsc='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME commit -m'	# comando rapido de commit
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
@@ -31,7 +31,7 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias cp='cp -i'                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-alias vifm='./.config/vifm/scripts/vifmrun'
+# alias vifm='./.config/vifm/scripts/vifmrun'
 
 # 'htop' enves de 'top'
 alias top='htop'

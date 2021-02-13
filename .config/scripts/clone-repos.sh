@@ -17,4 +17,10 @@ cd $HOME/.config/zsh
 git clone "https://github.com/${REPOS[2]}.git" "$HOME/.config/zsh/zsh-syntax-highlighting"
 git clone "https://github.com/${REPOS[3]}.git" "$HOME/.config/zsh/powerlevel10k"
 
+
+
+
+
+
+
 cd $HOME
