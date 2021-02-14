@@ -179,7 +179,7 @@ fileviewer *.pdf
         \ vifmimg clear
 
 fileviewer *.otf,*.ttf,*.woff
-        \ vifmimg font %px %py %pw %ph %c
+        \ vifmimg fontpreview %px %py %pw %ph %c
         \ %pc
         \ vifmimg clear
 

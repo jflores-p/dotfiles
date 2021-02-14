@@ -31,7 +31,7 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias cp='cp -i'                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-# alias vifm='./.config/vifm/scripts/vifmrun'
+alias vifmrun='source ~/.config/vifm/scripts/vifmrun'
 
 # 'htop' enves de 'top'
 alias top='htop'

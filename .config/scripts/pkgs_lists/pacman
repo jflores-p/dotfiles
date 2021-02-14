@@ -9,9 +9,9 @@ exa
 fakeroot
 firefox
 flex
+fzf
 gamemode
 grub
-gvim
 htop
 lib32-gamemode
 lib32-mesa-demos
@@ -38,6 +38,7 @@ steam
 vifm
 vulkan-tools
 wget
+xdotool
 xf86-video-amdgpu
 xorg-bdftopcf
 xorg-docs

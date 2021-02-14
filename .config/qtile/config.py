@@ -16,10 +16,14 @@ myTerm = "alacritty"
 keys = [
 
     # Aplicaciones
+    Key([mod], "Return", lazy.spawn(myTerm)),
+
     Key([mod, "shift"], "Return", lazy.spawn("rofi -modi drun -show drun -display-drun \"Run: \" -matching  \"glob\" -drun-display-format \"{name}\" "),
         desc='Rofi launcher'),
 
-    Key([mod], "e", lazy.spawn(myTerm + " -e vifmrun"),
+    #  Key([mod], "e", lazy.spawn(myTerm+" -v -e source $HOME/.config/vifm/scripts/vifmrun"),
+    #  Key([mod], "e", lazy.spawn(myTerm+" -e vifmrun"),
+    Key([mod], "e", lazy.spawn(myTerm+" -e ./.config/vifm/scripts/vifmrun"),
         desc='Vifm with image preiew'),
 
                 #tecla superior al TAB
@@ -64,8 +68,6 @@ keys = [
 
     Key([mod, "shift"], "space", lazy.layout.rotate(), lazy.layout.flip(),
         desc='Switch which side main pane occupies (XmonadTall)'),
-
-    Key([mod], "Return", lazy.spawn(myTerm)),
 
     Key([mod], "Tab", lazy.next_layout(),
         desc='Toggle between different layouts as defined below'),
