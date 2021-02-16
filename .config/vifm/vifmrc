@@ -1,7 +1,11 @@
-" Repos de dependencias:
-" cirala/vifmimg
-" sdushantha/fontpreview
-" dirkvdb/ffmpegthumbnailer
+"  _ \  __|  _ \ __|   \ |  _ \  __|   \ |   __| _ _|  __|   __| 
+"  |  | _|   __/ _|   .  |  |  | _|   .  |  (      |   _|  \__ \ 
+" ___/ ___| _|  ___| _|\_| ___/ ___| _|\_| \___| ___| ___| ____/ 
+" git@github.com:cirala/vifmimg.git
+" git@github.com:dirkvdb/ffmpegthumbnailer.git
+" git@github.com:sdushantha/fontpreview.git
+" git@github.com:muennich/sxiv.git
+" sudo pacman -S imagemagick fzf xdotool ffmpeg libpng libjpeg poppler
 
 " vim: filetype=vifm :
 " My config file for the vifm terminal file manager.
@@ -100,7 +104,7 @@ set incsearch
 
 " Try to leave some space from cursor to upper/lower border in lists
 
-set scrolloff=4
+set scrolloff=20
 
 " Don't do too many requests to slow file systems
 

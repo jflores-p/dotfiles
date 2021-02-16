@@ -22,8 +22,8 @@ keys = [
         desc='Rofi launcher'),
 
     #  Key([mod], "e", lazy.spawn(myTerm+" -v -e source $HOME/.config/vifm/scripts/vifmrun"),
-    #  Key([mod], "e", lazy.spawn(myTerm+" -e vifmrun"),
-    Key([mod], "e", lazy.spawn(myTerm+" -e ./.config/vifm/scripts/vifmrun"),
+    Key([mod], "e", lazy.spawn(myTerm+" -e vf"),
+    #  Key([mod], "e", lazy.spawn(myTerm+" -e ./.config/vifm/scripts/vifmrun"),
         desc='Vifm with image preiew'),
 
                 #tecla superior al TAB
@@ -87,9 +87,9 @@ keys = [
 
     ## Change the volume if your keyboard has special volume keys.
     Key([], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer set Master 2%+ -q")),
+        lazy.spawn("amixer set Master 4%+ -q")),
     Key([], "XF86AudioLowerVolume",
-        lazy.spawn("amixer set Master 2%- -q")),
+        lazy.spawn("amixer set Master 4%- -q")),
     Key([], "XF86AudioMute",
         lazy.spawn("amixer set Master toggle -q")),
 ]
@@ -196,20 +196,20 @@ screens = [
                 widget.TextBox(text='|', foreground = colors[1]),
                 widget.TextBox(text=' ', foreground = colors[8]),
                 widget.DF(
-                    partition = "/home/joako/",
+                    partition = "/home/joako",
                     format = "({uf}{m}|{r:.0f}%)",
                     visible_on_warn = False,
                     foreground = colors[8],
                     ),
-                widget.DF(
-                    partition = "/etc/",
-                    format = "({uf}{m}|{r:.0f}%)",
-                    visible_on_warn = False,
-                    foreground = colors[8],
-                    ),
+                #  widget.DF(
+                    #  partition = "/etc/",
+                    #  format = "({uf}{m}|{r:.0f}%)",
+                    #  visible_on_warn = False,
+                    #  foreground = colors[8],
+                    #  ),
                 widget.TextBox(text='|', foreground = colors[1]),
                 widget.Net(
-                    interface = "enp4s0",
+                    interface = "enp5s0",
                     format = "{down} ↓↑{up} ",
                     foreground = colors[11]
                     ),
@@ -219,6 +219,11 @@ screens = [
                     device = 'default',
                     foreground = colors[10]
                     ),
+                widget.TextBox(text='|', foreground = colors[1]),
+                widget.Systray(
+                    foreground = colors[4],
+                    icon_size = 12
+                        ),
                 widget.TextBox(text='|', foreground = colors[1]),
                 widget.Clock(
                     font = "Hurmit Nerd Font Bold",

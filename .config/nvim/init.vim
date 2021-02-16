@@ -49,7 +49,7 @@ call plug#end()
 
 set number          " line numbers
 set relativenumber  " relative numbers
-set scrolloff=8
+set scrolloff=15
 set signcolumn=auto
 set tabstop=4       " tab spaces
 set softtabstop=4   " tab spaces
@@ -84,14 +84,13 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 set background=dark
-" colorscheme PaperColor
 colorscheme dracula
 
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
 " ----------------------------------------------------------------------------------------
 
-:imap ii <Esc>
+:imap uu <Esc>
 :imap :: <Esc>:
  
 nnoremap <C-h> <C-w>h
@@ -99,6 +98,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" move selected lines up or down
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
