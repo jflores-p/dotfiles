@@ -1,4 +1,5 @@
 alacritty
+alsa-tools
 autoconf
 automake
 base
@@ -13,8 +14,6 @@ fzf
 gamemode
 grub
 htop
-lib32-gamemode
-lib32-mesa-demos
 libreoffice-still
 lightdm-gtk-greeter-settings
 linux-zen
@@ -29,17 +28,19 @@ nitrogen
 nomacs
 numlockx
 obs-studio
+openssh
 patch
 pavucontrol
 portmidi
 qtile
 rofi
-steam
 vifm
 vulkan-tools
 wget
 xdotool
 xf86-video-amdgpu
+xmobar
+xmonad-contrib
 xorg-bdftopcf
 xorg-docs
 xorg-font-util
