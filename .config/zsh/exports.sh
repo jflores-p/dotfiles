@@ -8,7 +8,7 @@ export HISTCONTROL=ignoreboth
 ## GO
 export GOPATH=$HOME/go
 export GOHOME=/usr/local/go
-export GOROOT=$GOHOME/1.15.8
+export GOROOT=$GOHOME/1.16
 
 useGo() {
     local goRoot=$GOHOME/$1
@@ -41,6 +41,6 @@ JAVA_VERSION=15.0.2+7
 export JAVA_HOME=/usr/local/java/jdk-$JAVA_VERSION
 
 # PATH -- configuracion base y despues añade extras
-PATH="/bin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl:/usr/bin/site_perl:/usr/bin/vendor_perl:/home/joako/bin:/home/joako/.local/bin"
+PATH="/bin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/bin/core_perl:/usr/bin/site_perl:/usr/bin/vendor_perl:/home/joako/.local/bin"
 export PATH=$PATH:$NODEJS/bin:$JAVA_HOME/bin:$GOROOT/bin:$GOPATH/bin
 

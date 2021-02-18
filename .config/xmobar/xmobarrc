@@ -1,38 +1,40 @@
 Config { font = "xft:Hurmit Nerd Font:weight=bold:pixelsize=11:antialias=true:hinting=true"
-       , additionalFonts = ["xft:Hurmit Nerd Font:weight=bold:pixelsize=11:antialias=true:hinting=true"]
-       , borderColor = "black"
+       , additionalFonts = ["xft:Fira Code NF:weight=regular:pixelsize=16"--:antialias=true:hinting=true"
+                           ,"xft:FontAwesome:pixelsize=13"]
        , border = NoBorder
-       , bgColor = "#434758"
-       , fgColor = "grey"
+       , bgColor = "#282a36"
+       , fgColor = "#f8f8f2"
        , textOffset = 12
+       , textOffsets = [12]
        , alpha = 255
        , position = Top -- Static { xpos = 0 , ypos = 0, width = 1920, height = 20 }
        , lowerOnStart = True
-       , pickBroadest = False
+       --, pickBroadest = False
        , persistent = False
        , hideOnStart = False
        , iconRoot = "/home/joako/.xmonad/xpm/" --default: "."
+       --, iconOffset = 34
        , allDesktops = True
        , overrideRedirect = True
        , commands = [
                     -- Time and date
-                    Run Date "<fn=1>\xf133</fn>  %b %d %Y - (%H:%M) " "date" 50
+                    Run Date "<fn=1>\xf133</fn>  %d %b %Y - (%H:%M) " "date" 30
                     -- Network up and down
-                    , Run Network "enp5s0" ["-t", "<fn=1>\xf0aa</fn>  <rx>kb  <fn=1>\xf0ab</fn>  <tx>kb"] 20
+                    , Run Network "enp5s0" ["-t", "<fn=1>\xf0aa</fn>  <rx>kb  <fn=1>\xf0ab</fn>   <tx>kb"] 10
                     -- Disk space free
-                    , Run DiskU [("/", "<fn=1>\xf0c7</fn>  hdd: <free> free")] [] 60
-                    , Run Com "uname" ["-r"] "" 3600
+                    , Run DiskU [("/", "<fn=1>\xf0c7</fn>  hdd: <free> free")] [] 600
+                    -- , Run Com "uname" ["-r"] "" 3600
                     -- Prints out the left side items such as workspaces, layout, etc.
-                    -- The workspaces are 'clickable' in my configs.
                     , Run UnsafeStdinReader
         ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "\
-                    --<action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#666666>  </fc>|\
-                    \ %UnsafeStdinReader% }{ <fc=#666666>  </fc>|\
-                    \ <fc=#51afef> %disku% </fc><fc=#666666> </fc>|\
-                    \ <fc=#98be65> %enp5s0% </fc><fc=#666666> </fc>|\
-                    \ <fc=#46d9ff> %date%  </fc>"
+       , template = " %UnsafeStdinReader% }{ \
+                    \ <fc=#666666>|</fc>\
+                    \ <fc=#6272c7>%disku%</fc>\
+                    \ <fc=#666666>|</fc>\
+                    \ <fc=#98be65> %enp5s0% </fc>\
+                    \ <fc=#666666>|</fc>\
+                    \ <fc=#8be9fd> %date%  </fc>"
        }
 

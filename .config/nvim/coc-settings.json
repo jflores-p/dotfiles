@@ -9,6 +9,12 @@
       }
     }   
  },
+ "haskell": {
+    "command": "haskell-language-server-wrapper",
+    "args": ["--lsp"],
+    "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+    "filetypes": ["haskell", "lhaskell"]
+  },
  "suggest.noselect": false,
  "coc.preferences.formatOnSaveFiletypes":[
     "golang"
