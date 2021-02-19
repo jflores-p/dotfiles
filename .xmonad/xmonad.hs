@@ -124,7 +124,8 @@ joakoXPConfig = def
       , autoComplete        = Nothing
       , showCompletionOnTab = False
       , searchPredicate     = fuzzyMatch
-      , defaultPrompter     = id $ map toUpper  -- change prompt to UPPER
+      , sorter              = fuzzySort
+      -- , defaultPrompter     = id $ map toUpper  -- change prompt to UPPER
       , alwaysHighlight     = True
       , maxComplRows        = Nothing      -- set to 'Just 5' for 5 rows
       }
@@ -132,17 +133,17 @@ joakoXPConfig = def
 --Prompts
 editPrompt :: String -> X ()
 editPrompt home = do
-    str <- inputPrompt cfg "~/"
+    str <- inputPrompt cfg "~/" 
     case str of
         Just s -> openInEditor s
         Nothing -> pure ()
   where
-    cfg = joakoXPConfig { defaultText = "" }
-
+    cfg = joakoXPConfig { defaultText = "", autoComplete = Just 100000 }
 
 openInEditor :: String -> X ()
 openInEditor path =
-    safeSpawn myEditor [path]
+    spawn (myEditor ++ " " ++ path)
+
 
 
 archwiki, urban :: S.SearchEngine
@@ -206,13 +207,16 @@ myEasyKeys home =
         , ("M-C-q", io exitSuccess)             --
 
     -- Usefull things
-        , ("M-S-<Return>", shellPrompt joakoXPConfig)
-        -- , ("M-S-<Return>", spawn "rofi -modi drun -show drun -display-drun \"Run: \" -matching  \"glob\" -drun-display-format \"{name}\" ")
         , ("M-<Return>", spawn myTerminal)
-        , ("M-e", spawn (myTerminal ++ " -e vifmrun"))
+        -- , ("M-e",spawn (myTerminal ++ " -e /home/joako/.local/bin/vifmrun ."))
+        , ("M-e",spawn (myTerminal ++ " -e vifm ."))
+        -- , ("M-e",spawn myEditor)
 
     -- Prompts
+        -- , ("M-S-<Return>", spawn "rofi -modi drun -show drun -display-drun \"Run: \" -matching  \"glob\" -drun-display-format \"{name}\" ")
+        , ("M-S-<Return>", shellPrompt joakoXPConfig)
         , ("M-p e", editPrompt home)        
+        , ("M-r", prompt (myTerminal ++ " -e ") joakoXPConfig)
 
     -- Killers
         , ("M-S-c", kill)

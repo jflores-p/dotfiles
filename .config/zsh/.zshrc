@@ -10,7 +10,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=$XDG_CACHE_HOME/zsh/history
 
-
 setopt appendhistory
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS HIST_IGNORE_SPACE
@@ -28,8 +27,8 @@ source $ZDOTDIR/exports.sh
 source $ZDOTDIR/aliases.sh
 
 ###### PROMPT ######
-#source $ZDOTDIR/git_prompt.zsh
-source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
+# source $ZDOTDIR/git_prompt.zsh
+# source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh//.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
@@ -37,3 +36,10 @@ source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 colorscript -r
+eval "$(starship init zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/joako/google-cloud-sdk/path.zsh.inc' ]; then . '/home/joako/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/joako/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/joako/google-cloud-sdk/completion.zsh.inc'; fi

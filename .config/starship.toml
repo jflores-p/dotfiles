@@ -1,0 +1,25 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[➜](bold red)"
+
+[line_break]
+disabled = true
+
+[golang]
+disabled = false
+format = "via [ﳑ $version](bold cyan) "
+
+[directory]
+read_only = ":"
+truncation_lenght = 1
+
+[git_branch]
+style = "bold fg:#bd93f9"
+
+[gcloud]
+disabled = true
+format = 'on [$symbol(\($project\))]($style) '

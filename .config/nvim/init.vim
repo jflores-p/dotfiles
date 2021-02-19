@@ -22,7 +22,13 @@ Plug 'ryanoasis/vim-devicons'
 
 " [[ Writting tools ]]
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " completion tool
-Plug 'preservim/nerdcommenter' 
+Plug 'preservim/nerdcommenter'
+
+" [[ Syntax helpers ]]
+Plug 'dag/vim-fish'
+Plug 'plasticboy/vim-markdown'
+Plug 'cespare/vim-toml'
+Plug 'dag/vim2hs'
 
 " [[ Extra tools ]]
 Plug 'vimwiki/vimwiki'                          " own wiki
@@ -39,7 +45,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
-Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -60,6 +65,7 @@ set splitbelow splitright
 set encoding=UTF-8
 set mouse=nvi
 set updatetime=100
+set nofoldenable
 let mapleader=','
 
 set clipboard+=unnamedplus
