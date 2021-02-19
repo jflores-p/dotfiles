@@ -127,7 +127,7 @@ joakoXPConfig = def
       , sorter              = fuzzySort
       -- , defaultPrompter     = id $ map toUpper  -- change prompt to UPPER
       , alwaysHighlight     = True
-      , maxComplRows        = Nothing      -- set to 'Just 5' for 5 rows
+      , maxComplRows        = Just 5      -- set to 'Just 5' for 5 rows
       }
 
 --Prompts
@@ -219,7 +219,7 @@ myEasyKeys home =
         , ("M-r", prompt (myTerminal ++ " -e ") joakoXPConfig)
 
     -- Killers
-        , ("M-S-c", kill)
+        , ("M-C-c", kill)
 
     -- Floating windows
         , ("M-t", withFocused $ windows . W.sink)     -- Put floating focused window into the pile
