@@ -213,13 +213,15 @@ myEasyKeys home =
         -- , ("M-e",spawn myEditor)
 
     -- Prompts
-        -- , ("M-S-<Return>", spawn "rofi -modi drun -show drun -display-drun \"Run: \" -matching  \"glob\" -drun-display-format \"{name}\" ")
-        , ("M-S-<Return>", shellPrompt joakoXPConfig)
-        , ("M-p e", editPrompt home)        
-        , ("M-r", prompt (myTerminal ++ " -e ") joakoXPConfig)
+        -- , ("M-S-<Return>", shellPrompt joakoXPConfig)
+        , ("M-S-<Return>", spawn "rofi -show drun" )
+        -- , ("M-p e", editPrompt home)        
+        , ("M-p e", spawn "~/.config/rofi/edit-files.sh")
+        , ("M-r", prompt (myTerminal ++ " -e ") joakoXPConfig)        
+        , ("M-p m", manPrompt joakoXPConfig)          -- manPrompt
 
     -- Killers
-        , ("M-C-c", kill)
+        , ("M-M1-c", kill)
 
     -- Floating windows
         , ("M-t", withFocused $ windows . W.sink)     -- Put floating focused window into the pile
@@ -246,8 +248,8 @@ myEasyKeys home =
     -- Window resizing
         , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
         , ("M-l", sendMessage Expand)                   -- Expand horiz window width
-        , ("M-A-j", sendMessage MirrorShrink)          -- Shrink vert window width
-        , ("M-A-k", sendMessage MirrorExpand)          -- Exoand vert window width
+        , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
+        , ("M-M1-k", sendMessage MirrorExpand)          -- Exoand vert window width
 
     -- Multimedia
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")

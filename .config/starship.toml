@@ -11,15 +11,17 @@ disabled = true
 
 [golang]
 disabled = false
-format = "via [ﳑ $version](bold cyan) "
+format = "via [ﳑ $version](bold cyan)"
 
 [directory]
 read_only = ":"
-truncation_lenght = 1
+truncation_symbol = ".../"
+style ="bold cyan"
+fish_style_pwd_dir_length = 1
 
 [git_branch]
 style = "bold fg:#bd93f9"
 
 [gcloud]
 disabled = true
-format = 'on [$symbol(\($project\))]($style) '
+format = 'on [$symbol(\($project\))]($style)'

@@ -8,7 +8,8 @@ export HISTCONTROL=ignoreboth
 ## GO
 export GOPATH=$HOME/go
 export GOHOME=/usr/local/go
-export GOROOT=$GOHOME/1.16
+# export GOROOT=$GOHOME/1.16
+export GOROOT=$GOHOME/1.15.8
 
 useGo() {
     local goRoot=$GOHOME/$1

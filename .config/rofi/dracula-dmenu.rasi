@@ -1,0 +1,51 @@
+*{
+    text-color: #f8f8f2;
+    /* font: "Hasklug Nerd Font Mono 9"; */
+    /* font: "Hurmit Nerd Font 9"; */
+    font: "JetBrainsMono NF 9";
+    height: 20px;
+    background-color: #282a36;
+    active-background: #bd93f9;
+    urgent-background: #ff5555;
+    selected-background: @active-background;
+    prompt-font: "JetBrainsMono NF Bold 9";
+    prompt-padding: 2px;
+    prompt-background: #51afef;
+    prompt-foreground: #282a36;
+}
+#window {
+    anchor: north;
+    location: north;
+    width: 100%;
+    padding: 0px;
+    children: [ horibox ];
+    background-color: @background;
+}
+#horibox {
+    orientation: horizontal;
+    children: [ prompt, entry, listview ];
+}
+#prompt {
+    padding:          @prompt-padding;
+    background-color: @prompt-background;
+    text-color:       @prompt-foreground;
+    font:             @prompt-font;
+}
+#listview {
+    layout: horizontal;
+    lines: 100;
+}
+#entry {
+    padding: 2px;
+    expand: false;
+    width: 10em;
+}
+#element {
+    padding: 2px 8px;
+}
+#element selected {
+    
+    background-color: @selected-background;
+    text-color:       @background-color;
+}
+
