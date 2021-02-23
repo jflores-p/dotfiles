@@ -34,7 +34,8 @@ DISTRO=linux-x64
 NODEJS=/usr/local/nodejs/node-$VERSION-$DISTRO
 
 ## MAN
-export MANPATH=/usr/share/man
+# export MANPATH=/usr/share/man
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ## JAVA
 # adoptopenjdk

@@ -43,13 +43,12 @@ alias fgrep='fgrep --color=auto'
 alias cp='cp -i'                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-# alias vf='source ~/.config/vifm/scripts/vifmrun'
 alias vf='vifmrun'
 
 # 'htop' enves de 'top'
 alias top='htop'
-
 alias nv='nvim'
+alias cat='bat'
     
 # docker
 alias dls='docker image ls'

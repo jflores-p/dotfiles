@@ -3,6 +3,7 @@ configuration {
     
     modi: "drun,run";
     drun-display-format: "{name}";
-    display-drun: "Run: ";
+    display-drun: "Run:";
+    display-run: "Command:";
 }
 

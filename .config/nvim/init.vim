@@ -92,6 +92,8 @@ let g:PaperColor_Theme_Options = {
 set background=dark
 colorscheme dracula
 
+hi Normal guibg=NONE ctermbg=NONE
+
 " ----------------------------------------------------------------------------------------
 " ==> Some especial keys
 " ----------------------------------------------------------------------------------------

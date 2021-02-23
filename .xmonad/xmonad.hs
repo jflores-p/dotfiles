@@ -1,5 +1,8 @@
 -- Base
 import XMonad
+import Control.Monad
+import DBus (MethodCall, methodCall, methodCallBody, methodCallDestination, objectPath_, interfaceName_, memberName_, busName_, toVariant)
+import DBus.Client
 import System.Directory
 import System.Exit -- (exitSuccess, exitWith)
 import System.IO (hPutStrLn)
@@ -17,7 +20,7 @@ import XMonad.Actions.WithAll (sinkAll, killAll)
 -- Data
 import Data.Char (isSpace, toUpper)
 import Data.Monoid
-import qualified Data.Map        as M
+import qualified Data.Map as M
 
 -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
@@ -25,7 +28,7 @@ import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcompo
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
-import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
+import XMonad.Hooks.ManageDocks (avoidStruts, checkDock, docks, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.WorkspaceHistory
 
@@ -53,13 +56,14 @@ import XMonad.Prompt.Ssh
 import XMonad.Prompt.XMonad
 import Control.Arrow (first)
 
--- Utilities
-import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
-import XMonad.Util.SpawnOnce
-
 -- Text
 import Text.Printf
+
+-- Utilities
+import XMonad.Util.ExtensibleState as XS
+import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe, unsafeSpawn)
+import XMonad.Util.SpawnOnce
 
 
 myFont :: String
@@ -130,6 +134,70 @@ joakoXPConfig = def
       , maxComplRows        = Just 5      -- set to 'Just 5' for 5 rows
       }
 
+----- HIDE XMOBAR ------
+
+hideXmobar :: X ()
+hideXmobar = do
+        -- sendMessage ToggleStruts
+        unsafeSpawn "dbus-send --session --dest=org.Xmobar.Control --type=method_call --print-reply '/org/Xmobar/Control' org.Xmobar.Control.SendSignal \"string:Toggle 0\""
+        return ()
+
+
+
+myToggleDocksHook :: Event -> X All
+-------------------------------------valor de la 'v'
+myToggleDocksHook e = myToggleDocks 4 0x76 e  >> return (All True)
+
+data DockToggleTime = DTT { lastTime :: Time } deriving (Eq, Show, Typeable)
+
+instance ExtensionClass DockToggleTime where
+    initialValue = DTT 0
+
+myToggleDocks :: Int -> KeySym -> Event -> X All
+myToggleDocks to ks ( KeyEvent { ev_event_display = d
+                                , ev_event_type    = et
+                                , ev_keycode       = ekc
+                                , ev_time          = etime
+                                } ) =
+        io (keysymToKeycode d ks) >>= toggleDocks >> return (All True)
+    where
+    toggleDocks kc
+        | ekc == kc && et == keyPress = do
+            safeSendSignal ["Toggle 0","TogglePersistent"]
+            XS.put ( DTT etime )
+        | ekc == kc && et == keyRelease = do
+            gap <- XS.gets ( (-) etime . lastTime )
+            safeSendSignal [ "Toggle 0"
+                           , "TogglePersistent"
+                        -- , "Hide " ++ show (if gap < 200 then to else 10)
+                        ]
+            sendMessage ToggleStruts
+        | otherwise = return ()
+
+    safeSendSignal s = catchX (io $ sendSignal s) (return ())
+    sendSignal    = withSession . callSignal
+    withSession mc = connectSession >>= \c -> callNoReply c mc >> disconnect c
+    callSignal :: [String] -> MethodCall
+    callSignal s = ( methodCall
+                    ( objectPath_    "/org/Xmobar/Control" )
+                    ( interfaceName_ "org.Xmobar.Control"  )
+                    ( memberName_    "SendSignal"          )
+                ) { methodCallDestination = Just $ busName_ "org.Xmobar.Control"
+                    , methodCallBody        = map toVariant s
+                    }
+
+myToggleDocks _ _ _ = return (All True)
+
+myDocksEventHook :: Event -> X All
+myDocksEventHook e = do
+    when (et == mapNotify || et == unmapNotify) $
+        whenX ((not `fmap` (isClient w)) <&&> runQuery checkDock w) refresh
+    return (All True)
+    where
+        w  = ev_window e
+        et = ev_event_type e
+------------------------
+
 --Prompts
 editPrompt :: String -> X ()
 editPrompt home = do
@@ -179,14 +247,16 @@ full = renamed [ Replace "full" ]
         $ limitWindows 8
         $ Full
         
+-- myLayout = ( smartBorders full ||| (avoidStruts $ mouseResize (tall ||| Mirror (tall))))
 myLayout = smartBorders . avoidStruts $ mouseResize $ myDefaultLaout
         where
-          myDefaultLaout = tall ||| Mirror (tall)||| full
+          myDefaultLaout = tall ||| Mirror (tall) ||| full
 
 -- > xprop | grep WM_CLASS
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
     [ title =? "Mozilla Firefox" --> doShift ( myWorkspaces !! 0 )
+    , title =? "obs" --> doShift ( myWorkspaces !! 6 )
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -197,7 +267,9 @@ myLogHook = fadeInactiveLogHook fadeAmount
 
 -- Startup hook
 myStartupHook = do
-        spawnOnce "nitrogen --restore &"
+        spawnOnce "redshift &"
+        spawnOnce "picom --experimental-backends &"
+        spawnOnce "nitrogen --set-scaled --random &"
 
 myEasyKeys :: String -> [(String, X ())]
 myEasyKeys home =
@@ -221,7 +293,8 @@ myEasyKeys home =
         , ("M-p m", manPrompt joakoXPConfig)          -- manPrompt
 
     -- Killers
-        , ("M-M1-c", kill)
+        , ("M-C-c", kill)
+        , ("M-C-S-c", killAll)
 
     -- Floating windows
         , ("M-t", withFocused $ windows . W.sink)     -- Put floating focused window into the pile
@@ -254,9 +327,9 @@ myEasyKeys home =
     -- Multimedia
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-        , ("<Scroll_lock>", spawn "betterlockscreen -l dim")
+        , ("<Scroll_lock>", spawn "betterlockscreen -s -l dim")
         , ("<Print>", spawn "scrot -q 90 ~/Imagenes/ScreenShots/'full_%d-%m-%Y_%H:%M:%S'.png")
-        , ("S-<Print>", spawn "scrot -q 90 -s -f --line width=2,color=\"#ff79c6\" ~/Imagenes/ScreenShots/'recorted_%d-%m-%Y_%H:%M:%S'.png")
+        , ("S-<Print>", spawn "scrot -q 90 -s -f --line width=2,color=\"#ff79c6\" ~/Imagenes/screenshots/'recorted_%d-%m-%Y_%H:%M:%S'.png")
         ]
         ++ [("M-b " ++ k, S.promptSearch joakoXPConfig f) | (k,f) <- searchList ]
         ++ [("M-b b " ++ k, S.selectSearch f) | (k,f) <- searchList ]
@@ -265,7 +338,11 @@ myEasyKeys home =
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch firefox
-    [((modm,xK_masculine), spawn "firefox")
+    [ ((modm,xK_masculine), spawn "firefox")
+    , ((modm, xK_period), hideXmobar )
+    , ((modm, xK_v), return ())
+    -- , ((0, xK_Alt_R), return ())
+    -- , ((modm, xK_l), toggleDocksHook 400 xK_l)
     ]
     ++
     [((m .|. modm, k), windows $ f i)
@@ -277,9 +354,9 @@ main :: IO ()
 main = do
         home <- getHomeDirectory
         xmproc <- spawnPipe "xmobar $HOME/.config/xmobar/xmobarrc"
-        xmonad $ fullscreenSupport $ ewmh def
+        xmonad $ fullscreenSupport $ docks $ ewmh def
             { manageHook = ( isFullscreen --> doFullFloat ) <+> manageDocks <+> myManageHook <+> insertPosition End Newer
-            , handleEventHook = docksEventHook
+            , handleEventHook    = myDocksEventHook <+> myToggleDocksHook
             , keys               = myKeys
             , mouseBindings      = myMouseBindings
             , modMask            = myModMask
