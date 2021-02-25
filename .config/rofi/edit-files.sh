@@ -53,17 +53,20 @@ case "$choice" in
 	neovim)
 		choice="$HOME/.config/nvim/init.vim"
     ;;
-    starship)
-        choice="$HOME/.config/starship.toml"
+    picom)
+        choice="$HOME/.config/picom/picom.conf"
 	;;
 	qtile)
 		choice="$HOME/.config/qtile/config.py"
+    ;;
+    starship)
+        choice="$HOME/.config/starship.toml"
 	;;
 	vifm)
 		choice="$HOME/.config/vifm/vifmrc"
 	;;
 	xmobar)
-		choice="$HOME/.config/xmobar/xmobarrc2"
+		choice="$HOME/.config/xmobar/xmobarrc"
 	;;
 	xmonad)
 		choice="$HOME/.xmonad/xmonad.hs"

@@ -13,6 +13,9 @@ set VERSION v14.15.5
 set DISTRO linux-x64
 set NODEJS /usr/local/nodejs/node-$VERSION-$DISTRO
 
+## LIBBRARIES
+set -x LD_LIBRARY_PATH /lib /usr/lib /usr/local/lib
+
 ## MAN
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 

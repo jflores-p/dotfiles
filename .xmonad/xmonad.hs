@@ -119,8 +119,8 @@ joakoXPConfig = def
       , fgHLight            = "#000000"
       , borderColor         = "#bd93f9"
       , promptBorderWidth   = 0
-      , position            = Top
-      -- , position            = CenteredAt { xpCenterY = 0.3, xpWidth = 0.3 }
+      -- , position            = Top
+      , position            = CenteredAt { xpCenterY = 0.011, xpWidth = 0.995 }
       , height              = 20
       , historySize         = 256
       , historyFilter       = id
@@ -248,17 +248,24 @@ full = renamed [ Replace "full" ]
         $ Full
         
 -- myLayout = ( smartBorders full ||| (avoidStruts $ mouseResize (tall ||| Mirror (tall))))
-myLayout = smartBorders . avoidStruts $ mouseResize $ myDefaultLaout
+myLayout = smartBorders $ avoidStruts $ mouseResize $ myDefaultLaout
         where
           myDefaultLaout = tall ||| Mirror (tall) ||| full
 
 -- > xprop | grep WM_CLASS
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
-    [ title =? "Mozilla Firefox" --> doShift ( myWorkspaces !! 0 )
-    , title =? "obs" --> doShift ( myWorkspaces !! 6 )
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+    [ className =? "Brave-browser" --> doShift ( myWorkspaces !! 0 )
+    , className =? "discord" --> doShift ( myWorkspaces !! 4 )
+    , className =? "Google-chrome" --> doShift ( myWorkspaces !! 0 )
+    , className =? "Gimp-2.10" --> doShift ( myWorkspaces !! 6 )
+    , className =? "Gimp" --> doShift ( myWorkspaces !! 6 )
+    , className =? "Mailspring" --> doShift (myWorkspaces !! 5 )
+    , className =? "firefox" --> doShift ( myWorkspaces !! 0 ) -- Firefox
+    , className =? "obs" --> doShift ( myWorkspaces !! 6 )
+
+    , resource =? "desktop_window" --> doIgnore
+    , resource =? "kdesktop"       --> doIgnore ]
 
 
 myLogHook :: X ()
@@ -268,8 +275,8 @@ myLogHook = fadeInactiveLogHook fadeAmount
 -- Startup hook
 myStartupHook = do
         spawnOnce "redshift &"
-        spawnOnce "picom --experimental-backends &"
         spawnOnce "nitrogen --set-scaled --random &"
+        spawnOnce "picom --experimental-backends &"
 
 myEasyKeys :: String -> [(String, X ())]
 myEasyKeys home =
