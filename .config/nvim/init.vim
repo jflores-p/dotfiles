@@ -23,6 +23,7 @@ Plug 'ryanoasis/vim-devicons'
 " [[ Writting tools ]]
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " completion tool
 Plug 'preservim/nerdcommenter'
+Plug 'junegunn/vim-easy-align'
 
 " [[ Syntax helpers ]]
 Plug 'dag/vim-fish'
@@ -33,7 +34,7 @@ Plug 'dag/vim2hs'
 " [[ Extra tools ]]
 Plug 'vimwiki/vimwiki'                          " own wiki
 Plug 'ap/vim-css-color' 		            	" HEX-color viewer
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
 
 " [[ File visualizer ]]
 Plug 'vifm/vifm.vim'                            " file-manger inside nvim
@@ -140,6 +141,14 @@ endfunction
 nmap <leader>g :call Goyo_enter()<CR>
 nmap <leader>l :call Goyo_LL()<CR>
 nmap <leader><space> :call Goyo_out()<CR>
+
+
+" ----------------------------------------------------------------------------------------
+" ==> EasyAlign
+" ----------------------------------------------------------------------------------------
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " ----------------------------------------------------------------------------------------
 " ==> Vim-go
