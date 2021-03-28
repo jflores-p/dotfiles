@@ -26,20 +26,28 @@ source $ZDOTDIR/exports.sh
 ###### ALIASES ######
 source $ZDOTDIR/aliases.sh
 
-###### PROMPT ######
-# source $ZDOTDIR/git_prompt.zsh
-# source $ZDOTDIR/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh//.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-colorscript -r
-eval "$(starship init zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/joako/google-cloud-sdk/path.zsh.inc' ]; then . '/home/joako/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/joako/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/joako/google-cloud-sdk/completion.zsh.inc'; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/joako/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/joako/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/joako/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/joako/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+colorscript -r
+eval "$(starship init zsh)"

@@ -44,7 +44,7 @@ alias vf='vifmrun'
 alias top='htop'
 alias nv='nvim'
 alias cat='bat'
-alias clear='clear; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; echo'
+alias clear='/usr/bin/clear; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; echo'
 
     
 # docker

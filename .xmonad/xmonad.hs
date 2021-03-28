@@ -27,7 +27,7 @@ import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, s
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.InsertPosition
-import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Hooks.ManageHelpers 
 import XMonad.Hooks.ManageDocks (avoidStruts, checkDock, docks, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.WorkspaceHistory
@@ -263,7 +263,14 @@ myManageHook = composeAll
     , className =? "Mailspring" --> doShift (myWorkspaces !! 5 )
     , className =? "firefox" --> doShift ( myWorkspaces !! 0 ) -- Firefox
     , className =? "obs" --> doShift ( myWorkspaces !! 6 )
+    , className =? "Gcr-prompter" --> doShift ( myWorkspaces !! 5 )
+    
+    , className =? "Qalculate-gtk" --> doSideFloat SC -- S-south, etc. C-center
 
+    -- , className =? "Apostrophe" --> doCenterFloat
+    -- , className =? "Typora" --> doCenterFloat
+
+    , isDialog --> doCenterFloat
     , resource =? "desktop_window" --> doIgnore
     , resource =? "kdesktop"       --> doIgnore ]
 
@@ -275,7 +282,7 @@ myLogHook = fadeInactiveLogHook fadeAmount
 -- Startup hook
 myStartupHook = do
         spawnOnce "redshift &"
-        spawnOnce "nitrogen --set-scaled --random &"
+        spawnOnce "nitrogen --retore &"
         spawnOnce "picom --experimental-backends &"
 
 myEasyKeys :: String -> [(String, X ())]
@@ -285,18 +292,20 @@ myEasyKeys home =
         , ("M-S-q", spawn "xmonad --restart")   --
         , ("M-C-q", io exitSuccess)             --
 
-    -- Usefull things
+    -- Apps
         , ("M-<Return>", spawn myTerminal)
-        -- , ("M-e",spawn (myTerminal ++ " -e /home/joako/.local/bin/vifmrun ."))
-        , ("M-e",spawn (myTerminal ++ " -e vifm ."))
-        -- , ("M-e",spawn myEditor)
+        , ("M-e",spawn (myTerminal ++ " -e vifm .")) -- File viewer
+        , ("M-S-e",spawn "nemo")                     -- File viewer
+        , ("M-n a",spawn "apostrophe")               -- Markdown editor
+        , ("M-n s",spawn "typora")                   -- Markdown editor
+
 
     -- Prompts
         -- , ("M-S-<Return>", shellPrompt joakoXPConfig)
         , ("M-S-<Return>", spawn "rofi -show drun" )
         -- , ("M-p e", editPrompt home)        
         , ("M-p e", spawn "~/.config/rofi/edit-files.sh")
-        , ("M-r", prompt (myTerminal ++ " -e ") joakoXPConfig)        
+        , ("M-r", spawn "rofi -show run")
         , ("M-p m", manPrompt joakoXPConfig)          -- manPrompt
 
     -- Killers

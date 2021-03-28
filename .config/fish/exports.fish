@@ -1,6 +1,6 @@
 set fish_greeting
-set TERM "xterm-256color"
-set EDITOR "neovim"
+set -x TERM "xterm-256color"
+set -x EDITOR "nvim"
 
 ## Golang
 set -x GOPATH $HOME/go

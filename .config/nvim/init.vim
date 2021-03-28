@@ -4,7 +4,7 @@
 
 set nocompatible 		" be iMproved
 filetype plugin indent on
-syntax on
+syntax enable
 
 " ----------------------------------------------------------------------------------------
 " => Vundle For Managing Plugins
@@ -12,7 +12,7 @@ syntax on
 
 call plug#begin('~/.local/share/nvim/plugged')
 " [[ Golang ]]
-Plug 'fatih/vim-go', {'tag': 'v1.24'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " [[ Aesthetics ]]
 Plug 'itchyny/lightline.vim'
@@ -46,6 +46,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
+" Plug 'vim-syntastic/syntastic'
+
 
 call plug#end()
 
@@ -66,10 +68,12 @@ set splitbelow splitright
 set encoding=UTF-8
 set mouse=nvi
 set updatetime=100
-set nofoldenable
+set foldenable
+set foldmethod=syntax
 let mapleader=','
+set t_Co=256
 
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 
 " ----------------------------------------------------------------------------------------
 " ==> Some fancy settings
@@ -93,6 +97,7 @@ let g:PaperColor_Theme_Options = {
 set background=dark
 colorscheme dracula
 
+" transparency
 hi Normal guibg=NONE ctermbg=NONE
 
 " ----------------------------------------------------------------------------------------
@@ -100,6 +105,7 @@ hi Normal guibg=NONE ctermbg=NONE
 " ----------------------------------------------------------------------------------------
 
 :imap uu <Esc>
+:imap ii <Esc>
 :imap :: <Esc>:
  
 nnoremap <C-h> <C-w>h
@@ -154,12 +160,13 @@ nmap ga <Plug>(EasyAlign)
 " ==> Vim-go
 " ----------------------------------------------------------------------------------------
 
-let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
+let g:go_fold_enable = ['import']
 
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_function_parameters = 1
@@ -167,8 +174,12 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 
-
+nnoremap <leader>ie :GoIfErr<CR>
 :map <F5> :w<CR>:GoRun<CR>
+
+map <leader>gi :GoImports<CR>
+map <leader>gtf :GoTestFunc<CR>
+map <leader>gc :GoCoverageToggle<CR>
 
 " ----------------------------------------------------------------------------------------
 " ==> Lightline
@@ -239,7 +250,7 @@ let g:gitgutter_git_executable ="/usr/bin/git"
 let g:vimwiki_list = [{'path':'~/vimwiki', 'syntax':'markdown', 'ext':'.md'}]
 
 map <leader>ww :VimwikiIndex<CR>
-map <leader>vw :vsplit ~/vimwiki/index.md<CR>:vertical resize 40<CR>
+map <leader>vw :vsplit ~/vimwiki/index.md<CR>:vertical resize 60<CR>
 
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1

@@ -11,7 +11,7 @@ disabled = true
 
 [golang]
 disabled = false
-format = "via [ﳑ $version](bold cyan)"
+format = "via [ﳑ $version](bold cyan) "
 
 [directory]
 read_only = ":"
