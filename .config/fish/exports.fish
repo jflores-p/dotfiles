@@ -4,6 +4,7 @@ set -x EDITOR "nvim"
 
 ## Golang
 set -x GOPATH $HOME/go
+set -x GOBIN $GOPATH/bin
 set -l GOHOME /usr/local/go
 # set -l GOROOT $GOHOME/1.16
 set -x GOROOT $GOHOME/1.15.8
