@@ -15,4 +15,4 @@ alias vf='vifmrun'
 # 'htop' enves de 'top'
 alias top='htop'
 alias nv='nvim'
-alias cat='bat'" > .bash_aliases
+alias cat='batcat'" > .bash_aliases
